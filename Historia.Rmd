@@ -1,0 +1,54 @@
+
+---
+title: "ANÁLISIS MULTIVARIADO"
+author: 
+  - name: "Dr. rer. nat. Humberto LLinás Solano"
+    
+output: 
+  bookdown::html_document2: 
+    toc: true      
+    toc_depth: 4   
+    toc_float: true 
+    collapsed: false
+    smooth_scroll: false
+    number_sections: true   
+    html_document:
+      fig_caption: true
+      css: styles.css
+csl: science.csl
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = "center", message = FALSE, warning = FALSE)
+library(htmltools)
+library(readxl)
+library(r2d3)
+datos <- read_xlsx("DataBase.xlsx")
+
+library(jsonlite)
+json_data <- toJSON(datos)
+
+```
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- Separador  -->
+
+# Línea del tiempo
+
+
+<center>
+
+```{r Fig-LineaTime, echo=FALSE , fig.cap = "Cronología temporal de la historia de la estadística."}
+r2d3(data=json_data,
+ script = "script.js"
+)
+```
+
+
+
+
+
+</center>
